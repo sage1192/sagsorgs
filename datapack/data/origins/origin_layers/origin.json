@@ -1,7 +1,6 @@
 {
     "replace": false,
     "origins": [
-        "hunter:mhunter",
-        "shifter:pshifter"
+        "hunter:mhunter"
     ]
 }
