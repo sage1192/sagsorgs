@@ -1,0 +1,12 @@
+{
+	"name": "Thunderjacket",
+	"description": "Wearing a full set of gold armor will suppress your arcanophobia",
+	"badges": [
+		{
+			"type": "origins:tooltip",
+			"sprite": "hunter:textures/gui/badge/gold_chestplate.png",
+			"text": "Costs 1 durability every 5 seconds"
+		}
+	],
+	"type": "origins:simple"
+}

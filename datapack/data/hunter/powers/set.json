@@ -1,0 +1,25 @@
+{
+	"name": "Active Set Bonuses:",
+	"description": "",
+	"type": "origins:action_on_callback",
+	"badges": [
+	{
+		"type": "origins:tooltip",
+		"sprite": "hunter:textures/gui/badge/armor_stand.png",
+		"text": "Set bonuses are only active when wearing a full set of the same armor"
+	}
+	],
+	"entity_action_chosen": {
+		"type": "origins:and",
+		"actions": [
+		{
+			"type": "origins:execute_command",
+			"command": "team add hunternametaginvis"
+		},
+		{
+			"type": "origins:execute_command",
+			"command": "team modify hunternametaginvis nametagVisibility never"
+		}
+		]
+	}
+}

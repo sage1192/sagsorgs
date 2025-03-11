@@ -1,0 +1,150 @@
+{
+	"name": "Arcanophobia",
+	"description": "You refuse to use any armor or implements with magical augments",
+	"type": "origins:multiple",
+	"drop": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:drop_inventory",
+			"throw_randomly": true,
+			"slots": [
+				"weapon.mainhand",
+				"weapon.offhand",
+				"armor.head",
+				"armor.chest",
+				"armor.legs",
+				"armor.feet"
+			],
+			"item_condition": {
+				"type": "origins:enchantment",
+				"comparison": ">",
+				"compare_to": 0
+			},
+			"entity_action": {
+				"type": "origins:play_sound",
+				"sound": "enchant.thorns.hit",
+				"category": "players"
+			}
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:power_active",
+					"power": "hunter:toggle_state",
+					"inverted": true
+				},
+				{
+					"type": "origins:inventory",
+					"inventory_types": [
+						"inventory"
+					],
+					"slots": [
+						"armor.head",
+						"armor.chest",
+						"armor.legs",
+						"armor.feet"
+					],
+					"comparison": "!=",
+					"compare_to": 4,
+					"item_condition": {
+						"type": "origins:or",
+						"conditions": [
+						{
+							"type": "origins:ingredient",
+							"ingredient": {
+								"tag": "hunter:gold_set"
+							}
+						},
+						{
+							"type": "apoli:custom_data",
+							"nbt": "{huntertrophyeffect: wildcard}"
+						}
+						]
+					}
+				}
+			]
+		}
+	},
+	"damagecost": {
+		"type": "origins:action_over_time",
+		"interval": 100,
+		"entity_action": {
+			"type": "origins:modify_inventory",
+			"slots": [
+				"armor.head",
+				"armor.chest",
+				"armor.legs",
+				"armor.feet"
+			],
+			"item_action": {
+				"type": "origins:if_else",
+				"condition": {
+					"type": "origins:durability",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				"if_action": {
+					"type": "origins:and",
+					"actions": [
+					{
+						"type": "origins:holder_action",
+						"action": {
+							"type": "origins:play_sound",
+							"sound": "entity.item.break",
+							"category": "players",
+							"volume": 0.8
+						}
+					},
+					{
+						"type": "origins:consume"
+					}
+					]
+				},
+				"else_action": {
+					"type": "origins:damage",
+					"amount": 1,
+					"ignore_unbreaking": false
+				}
+			}
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+			{
+				"type": "origins:power_active",
+				"power": "hunter:toggle_state"
+			},
+			{
+				"type": "origins:inventory",
+				"inventory_types": [
+					"inventory"
+				],
+				"slots": [
+					"armor.head",
+					"armor.chest",
+					"armor.legs",
+					"armor.feet"
+				],
+				"comparison": "==",
+				"compare_to": 4,
+				"item_condition": {
+					"type": "origins:or",
+					"conditions": [
+					{
+						"type": "origins:ingredient",
+						"ingredient": {
+							"tag": "hunter:gold_set"
+						}
+					},
+					{
+						"type": "apoli:custom_data",
+						"nbt": "{huntertrophyeffect: wildcard}"
+					}
+					]
+				}
+			}
+			]
+		}
+	}
+}

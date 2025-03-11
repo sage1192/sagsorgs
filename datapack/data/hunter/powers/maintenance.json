@@ -1,0 +1,123 @@
+{
+	"name": "Weapon Maintenance",
+	"description": "While standing near a campfire, grindstone, or anvil, using your secondary skill will build back durability on a tool in your main hand",
+	"type": "origins:active_self",
+	"badges": [
+	{
+		"type": "origins:tooltip",
+		"sprite": "hunter:textures/gui/badge/campfire.png",
+		"text": "The type of station block does not affect the repair itself"
+	},
+	{
+		"type": "origins:sprite",
+		"sprite": "hunter:textures/gui/badge/grindstone.png"
+	},
+	{
+		"type": "origins:sprite",
+		"sprite": "hunter:textures/gui/badge/anvil.png"
+	}
+	],
+	"key": {
+		"key": "key.origins.secondary_active",
+		"continuous": true
+	},
+	"cooldown": 10,
+	"hud_render": {
+		"should_render": true
+	},
+	"entity_action": {
+		"type": "origins:and",
+		"actions": [
+		{
+			"type": "origins:swing_hand",
+			"hand": "MAIN_HAND"
+		},
+		{
+			"type": "origins:play_sound",
+			"sound": "minecraft:block.smithing_table.use"
+		},
+		{
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:inventory",
+				"slot": "weapon.mainhand",
+				"inventory_types": [
+					"inventory"
+				],
+				"item_condition": {
+					"type": "apoli:custom_data",
+					"nbt": "{huntertrophyeffect: repair}"
+				}
+			},
+			"if_action": {
+				"type": "origins:modify_inventory",
+				"slot": "weapon.mainhand",
+				"item_action": {
+					"type": "origins:damage",
+					"amount": -50,
+					"ignore_unbreaking": true
+				}
+			},
+			"else_action": {
+				"type": "origins:modify_inventory",
+				"slot": "weapon.mainhand",
+				"item_action": {
+					"type": "origins:damage",
+					"amount": -5,
+					"ignore_unbreaking": true
+				}
+			}
+		}
+		]
+	},
+	"condition": {
+		"type": "origins:and",
+		"conditions": [
+			{
+				"type": "origins:equipped_item",
+				"equipment_slot": "mainhand",
+				"item_condition": {
+					"type": "origins:damageable"
+				}
+			},
+			{
+				"type": "origins:equipped_item",
+				"equipment_slot": "mainhand",
+				"item_condition": {
+					"type": "origins:relative_durability",
+					"comparison": "<",
+					"compare_to": 1
+				}
+			},
+			{
+			"type": "origins:or",
+			"conditions": [
+				{"type": "origins:block_in_radius",
+					"block_condition": {
+					"type": "origins:block",
+					"block": "minecraft:campfire"
+					},
+				"radius": 2,
+				"shape": "sphere"
+				},
+				{"type": "origins:block_in_radius",
+					"block_condition": {
+					"type": "origins:block",
+					"block": "minecraft:anvil"
+					},
+				"radius": 2,
+				"shape": "sphere"
+				},
+				{"type": "origins:block_in_radius",
+					"block_condition": {
+					"type": "origins:block",
+					"block": "minecraft:grindstone"
+					},
+				"radius": 2,
+				"shape": "sphere"
+				}
+			]
+		}
+		]
+	}
+}

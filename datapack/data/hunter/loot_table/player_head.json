@@ -1,0 +1,114 @@
+{
+	"pools": [
+	{
+		"rolls": 1,
+		"entries": [
+		{
+			"type": "minecraft:item",
+			"name": "minecraft:player_head",
+			"weight": 1,
+			"functions": [
+			{
+				"function": "minecraft:set_name",
+				"name": {
+					"type": "selector",
+					"selector": "@s",
+					"extra": [
+					{
+						"type": "text",
+						"text": "'s Gilded Head",
+						"italic": false
+					}
+					]
+				},
+				"entity": "this"
+			},
+			{
+				"function": "minecraft:set_lore",
+				"lore": [
+				{
+					"type": "text",
+					"text": "Wildcard",
+					"underlined": true,
+					"italic": false
+				},
+				{
+					"type": "text",
+					"text": "Armor Behaves as if it were from every armor set",
+					"italic": false
+				}
+				],
+				"mode": "replace_all"
+			},
+			{
+				"function": "minecraft:set_custom_data",
+				"tag": {"huntertrophyeffect": "wildcard"}
+			},
+			{
+				"function": "minecraft:fill_player_head",
+				"entity": "this"
+			}
+			]
+		},
+		{
+			"type": "minecraft:item",
+			"name": "minecraft:player_head",
+			"weight": 1,
+			"functions": [
+			{
+				"function": "minecraft:set_name",
+				"name": {
+					"type": "selector",
+					"selector": "@s",
+					"extra": [
+					{
+						"type": "text",
+						"text": "'s Salvaged Head",
+						"italic": false
+					}
+					]
+				},
+				"entity": "this"
+			},
+			{
+				"function": "minecraft:set_lore",
+				"lore": [
+				{
+					"type": "text",
+					"text": "Right to Repair",
+					"italic": false,
+					"underlined": true
+				},
+				{
+					"type": "text",
+					"text": "Repairs on this item are 10x as efficient",
+					"italic": false
+				}
+				],
+				"mode": "replace_all"
+			},
+			{
+				"function": "minecraft:set_custom_data",
+				"tag": {"huntertrophyeffect": "repair"}
+			},
+			{
+				"function": "minecraft:fill_player_head",
+				"entity": "this"
+			}
+			]
+		},
+		{
+			"type": "minecraft:item",
+			"name": "minecraft:player_head",
+			"weight": 1,
+			"functions": [
+			{
+				"function": "minecraft:fill_player_head",
+				"entity": "this"
+			}
+			]
+		}
+		]
+	}
+	]
+}

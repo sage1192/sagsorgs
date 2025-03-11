@@ -1,0 +1,28 @@
+{
+"function": "minecraft:sequence",
+"functions": [
+
+{
+	"function": "minecraft:set_lore",
+	"lore": [
+	{
+		"type": "text",
+		"text": "Wildcard",
+		"underlined": true,
+		"italic": false
+	},
+	{
+		"type": "text",
+		"text": "Armor Behaves as if it were from every armor set",
+		"italic": false
+	}
+	],
+	"mode": "replace_all"
+},
+{
+	"function": "minecraft:set_custom_data",
+	"tag": {"huntertrophyeffect": "wildcard"}
+}
+
+]
+}

@@ -1,0 +1,330 @@
+{
+	"name": "Recovered Recipies",
+	"description": "Chainmail is craftable, and you can become nearly invisible with it",
+	"badges": [
+	{
+		"type": "origins:tooltip",
+		"sprite": "hunter:textures/gui/badge/chain_boots.png",
+		"text": "Costs 1 durability per second when active"
+	},
+	{
+		"type": "origins:crafting_recipe",
+		"sprite": "origins:textures/gui/badge/recipe.png",
+		"recipe": {
+			"id": "hunter:chestcraftbadgedisplay",
+			"type": "minecraft:crafting_shaped",
+			"key": {
+				"#": {
+					"item": "minecraft:chain"
+				}
+			},
+			"pattern": [
+				"# #",
+				"###",
+				"###"
+			],
+			"result": {
+				"id": "minecraft:chainmail_chestplate"
+			}
+		},
+		"prefix": "Vanilla-adjacent recipies also exist for the rest of the armor set"
+	}
+	],
+	"type": "origins:multiple",
+	"nonametag": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"rising_action": {
+			"type": "origins:execute_command",
+			"command": "team join hunternametaginvis @s"
+		},
+		"falling_action": {
+			"type": "origins:execute_command",
+			"command": "team leave @s"
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+			{
+				"type": "origins:power_active",
+				"power": "hunter:toggle_state"
+			},
+			{
+					"type": "origins:inventory",
+					"inventory_types": [
+						"inventory"
+					],
+					"slots": [
+						"armor.head",
+						"armor.chest",
+						"armor.legs",
+						"armor.feet"
+					],
+					"comparison": "==",
+					"compare_to": 4,
+					"item_condition": {
+						"type": "origins:or",
+						"conditions": [
+						{
+							"type": "origins:ingredient",
+							"ingredient": {
+								"tag": "hunter:chainmail_set"
+							}
+						},
+						{
+							"type": "apoli:custom_data",
+							"nbt": "{huntertrophyeffect: wildcard}"
+						}
+						]
+					}
+				}
+			]
+		}
+	},
+	"noarmor": {
+		"type": "origins:prevent_feature_render",
+		"features": [
+			"armor",
+			"cape"
+		],
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+			{
+				"type": "origins:power_active",
+				"power": "hunter:toggle_state"
+			},
+			{
+					"type": "origins:inventory",
+					"inventory_types": [
+						"inventory"
+					],
+					"slots": [
+						"armor.head",
+						"armor.chest",
+						"armor.legs",
+						"armor.feet"
+					],
+					"comparison": "==",
+					"compare_to": 4,
+					"item_condition": {
+						"type": "origins:or",
+						"conditions": [
+						{
+							"type": "origins:ingredient",
+							"ingredient": {
+								"tag": "hunter:chainmail_set"
+							}
+						},
+						{
+							"type": "apoli:custom_data",
+							"nbt": "{huntertrophyeffect: wildcard}"
+						}
+						]
+					}
+				}
+			]
+		}
+	},
+	"alpha": {
+		"type": "origins:model_color",
+		"alpha": 0.11,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+			{
+				"type": "origins:power_active",
+				"power": "hunter:toggle_state"
+			},
+			{
+				"type": "origins:inventory",
+				"inventory_types": [
+					"inventory"
+				],
+				"slots": [
+					"armor.head",
+					"armor.chest",
+					"armor.legs",
+					"armor.feet"
+				],
+				"comparison": "==",
+				"compare_to": 4,
+				"item_condition": {
+					"type": "origins:or",
+					"conditions": [
+					{
+						"type": "origins:ingredient",
+						"ingredient": {
+							"tag": "hunter:chainmail_set"
+						}
+					},
+					{
+						"type": "apoli:custom_data",
+						"nbt": "{huntertrophyeffect: wildcard}"
+					}
+					]
+				}
+			}
+			]
+		}
+	},
+	"damagecost": {
+		"type": "origins:action_over_time",
+		"interval": 20,
+		"entity_action": {
+			"type": "origins:modify_inventory",
+			"slots": [
+				"armor.head",
+				"armor.chest",
+				"armor.legs",
+				"armor.feet"
+			],
+			"item_action": {
+				"type": "origins:if_else",
+				"condition": {
+					"type": "origins:durability",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				"if_action": {
+					"type": "origins:and",
+					"actions": [
+					{
+						"type": "origins:holder_action",
+						"action": {
+							"type": "origins:play_sound",
+							"sound": "entity.item.break",
+							"category": "players",
+							"volume": 0.8
+						}
+					},
+					{
+						"type": "origins:consume"
+					}
+					]
+				},
+				"else_action": {
+					"type": "origins:damage",
+					"amount": 1,
+					"ignore_unbreaking": false
+				}
+			}
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+			{
+				"type": "origins:power_active",
+				"power": "hunter:toggle_state"
+			},
+			{
+				"type": "origins:inventory",
+				"inventory_types": [
+					"inventory"
+				],
+				"slots": [
+					"armor.head",
+					"armor.chest",
+					"armor.legs",
+					"armor.feet"
+				],
+				"comparison": "==",
+				"compare_to": 4,
+				"item_condition": {
+					"type": "origins:or",
+					"conditions": [
+					{
+						"type": "origins:ingredient",
+						"ingredient": {
+							"tag": "hunter:chainmail_set"
+						}
+					},
+					{
+						"type": "apoli:custom_data",
+						"nbt": "{huntertrophyeffect: wildcard}"
+					}
+					]
+				}
+			}
+			]
+		}
+	},
+	"helmet_craft": {
+		"type": "origins:recipe",
+		"recipe": {
+			"type": "minecraft:crafting_shaped",
+			"id": "hunter:chainhelmet",
+			"pattern": [
+				"###",
+				"# #"
+			],
+			"key": {
+				"#": {
+					"item": "minecraft:chain"
+				}
+			},
+			"result": {
+				"id": "minecraft:chainmail_helmet"
+			}
+		}
+	},
+	"chest_craft": {
+		"type": "origins:recipe",
+		"recipe": {
+			"type": "minecraft:crafting_shaped",
+			"id": "hunter:chainchest",
+			"pattern": [
+				"# #",
+				"###",
+				"###"
+			],
+			"key": {
+				"#": {
+					"item": "minecraft:chain"
+				}
+			},
+			"result": {
+				"id": "minecraft:chainmail_chestplate"
+			}
+		}
+	},
+	"legs_craft": {
+		"type": "origins:recipe",
+		"recipe": {
+			"type": "minecraft:crafting_shaped",
+			"id": "hunter:chainlegs",
+			"pattern": [
+				"###",
+				"# #",
+				"# #"
+			],
+			"key": {
+				"#": {
+					"item": "minecraft:chain"
+				}
+			},
+			"result": {
+				"id": "minecraft:chainmail_leggings"
+			}
+		}
+	},
+	"feet_craft": {
+		"type": "origins:recipe",
+		"recipe": {
+			"type": "minecraft:crafting_shaped",
+			"id": "hunter:chainfeet",
+			"pattern": [
+				"# #",
+				"# #"
+			],
+			"key": {
+				"#": {
+					"item": "minecraft:chain"
+				}
+			},
+			"result": {
+				"id": "minecraft:chainmail_boots"
+			}
+		}
+	}
+}

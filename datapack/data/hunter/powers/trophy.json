@@ -1,0 +1,49 @@
+{
+	"name": "Trophy Hunter",
+	"description": "Killing a marked player with a melee weapon will grant you a trophy",
+	"badges": [
+	{
+		"type": "origins:tooltip",
+		"sprite": "hunter:textures/gui/badge/wooden_sword.png",
+		"text": "Kill must be a MELEE kill to harvest a trophy"
+	}
+	],
+	"type": "origins:self_action_on_kill",
+	"target_condition": {
+		"type": "origins:and",
+		"conditions": [
+		{
+			"type": "origins:entity_type",
+			"entity_type": "minecraft:player"
+		},
+		{
+			"type": "origins:power",
+			"power": "hunter:mark"
+		}
+		]
+	},
+	"damage_condition": {
+		"type": "origins:projectile",
+		"inverted": true
+	},
+	"entity_action": {
+		"type": "origins:selector_action",
+		"selector": "@p[distance=0.01..]",
+		"bientity_action": {
+			"type": "origins:target_action",
+			"action": {
+				"type": "origins:and",
+				"actions": [
+				{
+					"type": "origins:revoke_all_powers",
+					"source": "hunter:case"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "loot give @p[distance=0.01..] loot hunter:player_head"
+				}
+				]
+			}
+		}
+	}
+}

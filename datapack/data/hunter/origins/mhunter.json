@@ -1,0 +1,25 @@
+{
+	"name": "Monster Hunter",
+	"description": "From far away lands and in search of a new bounty, you venture out upon hearing rumors of rare monsters with skulls sought after by many",
+	"powers": [
+		"hunter:casing",
+		"hunter:trophy",
+		"hunter:apply",
+		"hunter:maintenance",
+		
+		"hunter:arcane",
+		
+		"hunter:toggle",
+		"hunter:set",
+		"hunter:leather_set",
+		"hunter:chainmail_set",
+		"hunter:gold_set",
+		
+		"hunter:sell"
+	],
+	"icon": {
+		"id": "minecraft:leather_chestplate"
+	},
+	"order": 0,
+	"impact": 1
+}

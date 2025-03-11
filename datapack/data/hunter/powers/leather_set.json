@@ -1,0 +1,149 @@
+{
+	"name": "Longcoat Enthusiast",
+	"description": "You move much faster in leather armor",
+	"badges": [
+	{
+		"type": "origins:tooltip",
+		"sprite": "hunter:textures/gui/badge/leather_pants.png",
+		"text": "Costs 1 durability per three seconds active"
+	}
+	],
+	"type": "origins:multiple",
+	"head_plus": {
+		"type": "origins:conditioned_attribute",
+		"modifier": {
+			"id": "longcoat",
+			"attribute": "minecraft:generic.movement_speed",
+			"operation": "add_multiplied_total",
+			"amount": 0.25
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:power_active",
+					"power": "hunter:toggle_state"
+				},
+				{
+					"type": "origins:inventory",
+					"inventory_types": [
+						"inventory"
+					],
+					"slots": [
+						"armor.head",
+						"armor.chest",
+						"armor.legs",
+						"armor.feet"
+					],
+					"comparison": "==",
+					"compare_to": 4,
+					"item_condition": {
+						"type": "origins:or",
+						"conditions": [
+						{
+							"type": "origins:ingredient",
+							"ingredient": {
+								"tag": "hunter:leather_set"
+							}
+						},
+						{
+							"type": "apoli:custom_data",
+							"nbt": "{huntertrophyeffect: wildcard}"
+						}
+						]
+					}
+				}
+			]
+		},
+		"tick_rate": 1
+	},
+	"start": {
+		"type": "origins:action_on_callback",
+		"entity_action_chosen": {
+			"type": "origins:execute_command",
+			"command": "attribute @s minecraft:generic.movement_speed modifier remove longcoat"
+		}
+	},
+	"damagecost": {
+		"type": "origins:action_over_time",
+		"interval": 60,
+		"condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:power_active",
+						"power": "hunter:toggle_state"
+					},
+					{
+					"type": "origins:inventory",
+					"inventory_types": [
+						"inventory"
+					],
+					"slots": [
+						"armor.head",
+						"armor.chest",
+						"armor.legs",
+						"armor.feet"
+					],
+					"comparison": "==",
+					"compare_to": 4,
+					"item_condition": {
+						"type": "origins:or",
+						"conditions": [
+						{
+							"type": "origins:ingredient",
+							"ingredient": {
+								"tag": "hunter:leather_set"
+							}
+						},
+						{
+							"type": "apoli:custom_data",
+							"nbt": "{huntertrophyeffect: wildcard}"
+						}
+						]
+					}
+				}
+				]
+			},
+		"entity_action": {
+			"type": "origins:modify_inventory",
+			"slots": [
+				"armor.head",
+				"armor.chest",
+				"armor.legs",
+				"armor.feet"
+			],
+			
+			"item_action": {
+				"type": "origins:if_else",
+				"condition": {
+					"type": "origins:durability",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				"if_action": {
+					"type": "origins:and",
+					"actions": [
+					{
+						"type": "holder_action",
+						"action": {
+							"type": "origins:play_sound",
+							"sound": "entity.item.break",
+							"category": "players",
+							"volume": 0.8
+						}
+					},
+					{
+						"type": "origins:consume"
+					}
+					]
+				},
+				"else_action": {
+					"type": "origins:damage",
+					"amount": 1,
+					"ignore_unbreaking": false
+				}
+			}
+		}
+	}
+}

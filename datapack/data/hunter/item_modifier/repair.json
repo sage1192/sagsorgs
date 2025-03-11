@@ -1,0 +1,28 @@
+{
+"function": "minecraft:sequence",
+"functions": [
+
+{
+	"function": "minecraft:set_lore",
+	"lore": [
+	{
+		"type": "text",
+		"text": "Right To Repair",
+		"underlined": true,
+		"italic": false
+	},
+	{
+		"type": "text",
+		"text": "Repairs on this item are 10x as efficient",
+		"italic": false
+	}
+	],
+	"mode": "replace_all"
+},
+{
+	"function": "minecraft:set_custom_data",
+	"tag": {"huntertrophyeffect": "repair"}
+}
+
+]
+}

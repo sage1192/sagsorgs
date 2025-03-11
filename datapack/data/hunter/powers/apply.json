@@ -1,0 +1,72 @@
+{
+	"name": "Weapon Charm",
+	"description": "Trophies dropped have a chance to have special effects attached to them that can be applied to tools and armor",
+	"badges": [
+	{
+		"type": "origins:tooltip",
+		"sprite": "hunter:textures/gui/badge/player_head.png",
+		"text": "Trophies are applied directly in the inventory by dropping the head on top of the item"
+	}
+	],
+	"type": "origins:multiple",
+	"wildcard": {
+		"type": "origins:item_on_item",
+		"using_item_condition": {
+			"type": "origins:and",
+			"conditions": [
+			{
+				"type": "apoli:custom_data",
+				"nbt": "{huntertrophyeffect: wildcard}"
+			},
+			{
+				"type": "origins:ingredient",
+				"ingredient": {
+					"item": "minecraft:player_head"
+				}
+			}
+			]
+		},
+		"on_item_condition": {
+			"type": "origins:armor_value",
+			"comparison": ">",
+			"compare_to": 0
+		},
+		"using_item_action": {
+			"type": "origins:consume",
+			"amount": 1
+		},
+		"on_item_action": {
+			"type": "origins:modify",
+			"modifier": "hunter:wildcard"
+		}
+	},
+	"repair": {
+		"type": "origins:item_on_item",
+		"using_item_condition": {
+			"type": "origins:and",
+			"conditions": [
+			{
+				"type": "apoli:custom_data",
+				"nbt": "{huntertrophyeffect: repair}"
+			},
+			{
+				"type": "origins:ingredient",
+				"ingredient": {
+					"item": "minecraft:player_head"
+				}
+			}
+			]
+		},
+		"on_item_condition": {
+			"type": "origins:damageable"
+		},
+		"using_item_action": {
+			"type": "origins:consume",
+			"amount": 1
+		},
+		"on_item_action": {
+			"type": "origins:modify",
+			"modifier": "hunter:repair"
+		}
+	}
+}

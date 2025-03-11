@@ -1,0 +1,28 @@
+{
+	"name": "Hunter Mode",
+	"description": "Toggle various set bonus effects with your primary active power",
+	"type": "origins:multiple",
+	"state": {
+		"type": "origins:toggle",
+		"retain_state": false,
+		"active_by_default": false,
+		"key": {
+			"key": "key.origins.primary_active"
+		}
+	},
+	"icon": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 1,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "hunter:textures/gui/bar/resource_bar4.png",
+			"bar_index": 10,
+			"condition": {
+				"type": "origins:power_active",
+				"power": "*:*_state"
+			}
+		}
+	}
+}

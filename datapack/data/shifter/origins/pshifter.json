@@ -1,0 +1,12 @@
+{
+	"name": "Plane Shifter",
+	"description": "Aircraft Manueverer",
+	"powers": [
+		
+	],
+	"icon": {
+		"id": "minecraft:light"
+	},
+	"order": 1,
+	"impact": 1
+}
