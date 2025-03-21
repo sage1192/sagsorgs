@@ -1,6 +1,6 @@
 # Sag'sOrgs
 A set of custom origins for Minecraft Origins, each origin was made specially for a friend of mine :)
-### Origins included:
+### ""finished"" Origins included:
 - Monster Hunter
 ### Dependencies
 - Fabric Loader/Fabric API

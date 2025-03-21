@@ -1,0 +1,9 @@
+{
+	"name": "Goblin",
+	"description": ".",
+	"powers": [
+		"arereal:green"
+	],
+	"order": 0,
+	"impact": 2
+}
