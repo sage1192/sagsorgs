@@ -1,0 +1,25 @@
+{
+	"type": "origins:action_on_block_break",
+	"block_condition": {
+		"type": "origins:block",
+		"block": "minecraft:stone"
+	},
+	"block_action": {
+		"type": "origins:and",
+		"actions": [
+		{
+			"type": "origins:set_block",
+			"block": "minecraft:stone_slab[type=top]"
+		},
+		{
+			"type": "origins:execute_command",
+			"command": "kill @e[limit=1,sort=nearest,type=item]"
+		},
+		{
+			"type": "origins:execute_command",
+			"command": "summon minecraft:item ~ ~ ~ {Item:{id:\"minecraft:stone_slab\"}}"
+		}
+		]
+	},
+	"only_when_harvested": true
+}

@@ -1,3 +1,6 @@
 {
-	"type": "origins:simple"
+	"type": "origins:model_color",
+	"red": 0.7,
+	"green": 1,
+	"blue": 0.7
 }

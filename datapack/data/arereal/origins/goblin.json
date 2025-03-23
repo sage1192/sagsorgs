@@ -2,7 +2,8 @@
 	"name": "Goblin",
 	"description": ".",
 	"powers": [
-		"arereal:green"
+		"arereal:green",
+		"arereal:stonetest"
 	],
 	"order": 0,
 	"impact": 2
