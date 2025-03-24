@@ -3,7 +3,8 @@
 	"description": ".",
 	"powers": [
 		"arereal:green",
-		"arereal:stonetest"
+		"arereal:stonetest",
+		"arereal:crawl"
 	],
 	"order": 0,
 	"impact": 2
