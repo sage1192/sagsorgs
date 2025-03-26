@@ -21,12 +21,21 @@
 			]
 		},
 		"rising_action": {
+			"type": "origins:and",
+			"actions": [
+			{
 			"type": "origins:execute_command",
 			"command": "setblock ~ ~1 ~ barrier keep"
-		},
-		"falling_action": {
-			"type": "origins:execute_command",
-			"command": "fill ~1 ~ ~1 ~-1 ~2 ~-1 air replace barrier"
+			},
+			{
+				"type": "origins:delay",
+				"ticks": 3,
+				"action": {
+					"type": "origins:execute_command",
+					"command": "fill ~2 ~2 ~2 ~-2 ~-2 ~-2 air replace minecraft:barrier"
+				}
+			}
+			]
 		}
 	},
 	
