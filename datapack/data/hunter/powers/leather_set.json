@@ -125,7 +125,7 @@
 					"type": "origins:and",
 					"actions": [
 					{
-						"type": "holder_action",
+						"type": "origins:holder_action",
 						"action": {
 							"type": "origins:play_sound",
 							"sound": "entity.item.break",
