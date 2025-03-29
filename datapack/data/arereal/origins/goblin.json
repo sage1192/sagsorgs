@@ -4,7 +4,8 @@
 	"powers": [
 		"arereal:green",
 		"arereal:stonetest",
-		"arereal:crawl"
+		"arereal:crawl",
+		"arereal:scale"
 	],
 	"order": 0,
 	"impact": 2
