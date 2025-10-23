@@ -1,0 +1,8 @@
+{
+	"name": "Chromaslime",
+	"icon": {
+		"id": "minecraft:slime_ball"
+	},
+	"order": 0,
+	"impact": 3
+}
